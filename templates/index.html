@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">       
+    </head>    
+    <body>    
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url_for('main_page') }}">F C 2 E</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a class="home" href="{{ url_for('main_page') }}">Home</a></li>                                                            
+                    <li><a class="predict" href="{{ url_for('predict') }}">Predict</a></li>                
+                </ul>                                
+            </div>
+        </nav>  
+        <h2 class="title">Multiclass Food Classification and Calorie Estimation</h2> <br>
+        <div class="main-container">            
+            <div class="slideshow-container">
+                <div class="mySlides fade">                  
+                  <img src="{{ url_for('static', filename='images/pizza.jpg') }}" style="width:75%;height:65% ;">
+                  <div class="text"><h3>Pizza</h3></div>
+                </div>
+                
+                <div class="mySlides fade">                  
+                  <img src="{{ url_for('static', filename='images/burger.jpg') }}" style="width:75%;height:65%">
+                  <div class="text"><h3>Burger</h3></div>
+                </div>                
+                <div class="mySlides fade">                  
+                  <img src="{{ url_for('static', filename='images/fries.jpg') }}"" style="width:75%;height:65%;">
+                  <div class="text"><h3>Fries</h3></div>
+                </div>                                                          
+                <div>
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                </div>
+            </div>
+            <div class="side-bar">
+                <p>This is a webpage which takes an image as input and classifies it into a food category. From the predicted category, it also estimates the amount of calories present 
+                    in the particular food. A CNN model is trained on food images from 10 classes and is used for testing on the input image. Go to the predict section to test the model.
+                </p>
+            </div>
+        </div>
+        <script>
+            var slideIndex = 0;
+            showSlides();
+            
+            function showSlides() {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}    
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+        </script>
+    </body>
+</html>

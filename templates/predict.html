@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">       
+    </head>    
+    <body>    
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url_for('main_page') }}">F C 2 E</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a class="home" href="{{ url_for('main_page') }}">Home</a></li>                                                            
+                    <li><a class="predict" href="{{ url_for('predict') }}">Predict</a></li>                
+                </ul>                                
+            </div>
+        </nav>  
+        <div class="main-container-predict">
+            <h2>Want to know the calories in your food?</h2>
+            <p>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
+            </p>        
+            <form method="post" action="/predict" enctype="multipart/form-data">
+                <div class="choose-estimate">
+                    <p>
+                        <label class="input-group-btn">                                           
+                            <span class="btn btn-default btn-file">
+                                Browse...      
+                                <input type="file"  name="file" autocomplete="off" style="display: none;" required>                  
+                            </span>   
+                        </label>                 
+                    </p> 
+                    {% if filename %}
+                        <div>
+                            <img src="{{ url_for('display_image', filename=filename) }}" width="200">
+                        </div>
+                    {% endif %}    
+                    <br>       
+                    <p>
+                        <input type="submit" class="btn btn-default btn-md" value="Estimate Calories">
+                    </p>
+                </div>
+                <h3>
+                    {{ name }}
+                </h3>   
+                <h3>
+                    {{ description }}
+                </h3>             
+                <h3>                    
+                    {{ calories }}
+                </h3>
+            </form>   
+        </div>            
+    </body>
+</html>

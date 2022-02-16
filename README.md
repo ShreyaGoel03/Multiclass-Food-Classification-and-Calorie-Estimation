@@ -57,10 +57,13 @@ The screenshots from the webserver has been added which has 2 parts:
 
 #### Home Page
 
+![Home](https://user-images.githubusercontent.com/43794593/154293242-00f0dcf8-d562-4192-a738-bce59acf7078.png)
 
 #### Predcict Page
 
+![Predict1](https://user-images.githubusercontent.com/43794593/154293267-25c2125a-8746-4fb9-889d-4074a063aef6.png)
 
+![Predict2](https://user-images.githubusercontent.com/43794593/154293296-8f2c0a5e-99d4-4443-b7ce-82a5a7ffc031.png)
 
 
 
